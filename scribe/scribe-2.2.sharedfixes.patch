@@ -1,0 +1,11 @@
+--- facebook-scribe-63e4824/src/Makefile.am	2012-01-06 17:25:04.000000000 +0000
++++ facebook-scribe-63e4824-sharedfix/src/Makefile.am	2012-06-03 22:35:43.000000000 +0000
+@@ -92,7 +92,7 @@
+ if SHARED
+ shareddir = $(prefix)/lib
+ shared_PROGRAMS = libscribe.so
+-libscribe_so_SOURCES = gen-cpp/scribe.cpp gen-cpp/scribe_types.cpp
++libscribe_so_SOURCES = gen-cpp/scribe.cpp gen-cpp/scribe_types.cpp gen-cpp/BucketStoreMapping.cpp gen-cpp/bucketupdater_constants.cpp gen-cpp/bucketupdater_types.cpp
+ libscribe_so_CXXFLAGS = $(SHARED_CXXFLAGS)
+ libscribe_so_LDFLAGS = $(SHARED_LDFLAGS)
+ INTERNAL_LIBS =  libscribe.so
