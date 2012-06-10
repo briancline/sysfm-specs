@@ -45,6 +45,7 @@ enterprise linux distribution, you might check his repo first.
 
 * Silas Sewell's spec files: https://github.com/silas/rpms
 * The official spec file from thrift: https://github.com/apache/thrift/blob/trunk/contrib/thrift.spec
+* The redis spec file from FC EPEL6: http://pkgs.fedoraproject.org/gitweb/?p=redis.git;a=tree
 
 ***
 
