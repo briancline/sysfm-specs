@@ -9,7 +9,7 @@ repository.
 
 To begin using packages provided from rpm.sys.fm, run the following command to install the yum repository configuration. It will be enabled in yum right away.
 
-   rpm -Uvh http://rpm.sys.fm/centos/6/noarch/sysfm-release-6-1.el6.noarch.rpm
+`rpm -Uvh http://rpm.sys.fm/centos/6/noarch/sysfm-release-6-1.el6.noarch.rpm`
 
 
 # Packages
