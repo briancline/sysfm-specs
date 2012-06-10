@@ -21,6 +21,7 @@ fb303          Facebook Bassline (via Thrift's latest contrib sources).
 fb303-0.5.0    Facebook Bassline from Thrift 0.5.0 (best for Scribe).
 php-proctitle  The PECL proctitle extension, allowing process names to be set.
 phpredis       A native PHP extension for Redis, including a session handler.
+redis          Redis key-value store (latest release).
 scribe         Facebook Scribe, a distributed logging service/aggregator.
 sysfm-release  Provides the repo file for using rpm.sys.fm packages via yum.
 thrift         Apache Thrift (latest release).
