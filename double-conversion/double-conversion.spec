@@ -4,7 +4,7 @@ Release:	1%{?dist}
 Summary:	Library providing binary-decimal and decimal-binary routines for IEEE doubles.
 
 Group:		Development/Languages
-License:	PHP
+License:	BSD
 URL:		http://code.google.com/p/double-conversion
 Source0:	http://double-conversion.googlecode.com/files/double-conversion-1.1.1.tar.gz
 Source1:	SConstruct.double-conversion
