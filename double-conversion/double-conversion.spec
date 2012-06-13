@@ -20,7 +20,7 @@ Library providing binary-decimal and decimal-binary routines for IEEE doubles.
 %package devel
 Summary: Library providing binary-decimal and decimal-binary routines for IEEE doubles.
 Group: Development/Libraries
-Requires: %{name}-%{version}
+Requires: %{name} = %{version}
 
 %description devel
 Contains header files for developing applications that use the %{name} package.
@@ -32,7 +32,6 @@ Contains header files for developing applications that use the %{name} package.
 
 %build
 scons -f %{SOURCE1}
-%{__make} %{?_smp_mflags}
 
 
 %install
