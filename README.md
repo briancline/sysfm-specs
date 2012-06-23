@@ -17,15 +17,19 @@ To begin using packages provided from rpm.sys.fm, run the following command to i
 The following packages are currently provided:
 
 ```
-fb303          Facebook Bassline (via Thrift's latest contrib sources).
-fb303-0.5.0    Facebook Bassline from Thrift 0.5.0 (best for Scribe).
-php-proctitle  The PECL proctitle extension, allowing process names to be set.
-phpredis       A native PHP extension for Redis, including a session handler.
-redis          Redis key-value store (latest release).
-scribe         Facebook Scribe, a distributed logging service/aggregator.
-sysfm-release  Provides the repo file for using rpm.sys.fm packages via yum.
-thrift         Apache Thrift (latest release).
-thrift-0.5.0   Apache Thrift v0.5.0 (best for Scribe).
+cloudfuse          Use Rackspace Cloud Files (or any Swift install) as a mountpoint.
+double-conversion  Google's double-conversion library, extracted from V8.
+fb303              Facebook Bassline (via Thrift's latest contrib sources).
+fb303-0.5.0        Facebook Bassline from Thrift 0.5.0 (best for Scribe).
+gflags             Google's gflags library.
+google-glog        Google's glog library.
+php-proctitle      The PECL proctitle extension, allowing process names to be set.
+phpredis           A native PHP extension for Redis, including a session handler.
+redis              Redis key-value store (latest release).
+scribe             Facebook Scribe, a distributed logging service/aggregator.
+sysfm-release      Provides the repo file for using rpm.sys.fm packages via yum.
+thrift             Apache Thrift (latest release).
+thrift-0.5.0       Apache Thrift v0.5.0 (best for Scribe).
 ```
 
 
@@ -33,12 +37,7 @@ thrift-0.5.0   Apache Thrift v0.5.0 (best for Scribe).
 
 Much of the countless days and hours spent compiling thrift, fb303, and scribe 
 on Enterprise Linux 6 were severely reduced and much hair was saved by the 
-SPEC files provided by Silas Sewell at https://github.com/silas/rpms. The 
-quasi-official SPEC provided within the Thrift distribution itself proved very 
-quickly to be entirely unreliable as it is an antique. Silas' were far less 
-outdated and far more operable, provided a great base set of working SPECs, 
-saving numerous additional days and hours of time and a bit of hair from being 
-pulled out angrily. 
+SPEC files provided by Silas Sewell at https://github.com/silas/rpms.
 
 Should you find yourself wishing and praying for any particular package on any 
 enterprise linux distribution, you might check his repo first.
@@ -46,6 +45,9 @@ enterprise linux distribution, you might check his repo first.
 * Silas Sewell's spec files: https://github.com/silas/rpms
 * The official spec file from thrift: https://github.com/apache/thrift/blob/trunk/contrib/thrift.spec
 * The redis spec file from FC EPEL6: http://pkgs.fedoraproject.org/gitweb/?p=redis.git;a=tree
+* The spec file written and submitted for cloudfuse by kynx@github: https://gist.github.com/2960984/30c3632df89acd1a6c68b5330839e754965a8bf8
+* Google's own spec files for double-conversion, glog, and gflags
+* Facebook's patch to use the double-conversion code as a standalone system library: https://github.com/facebook/folly/blob/master/folly/SConstruct.double-conversion
 
 ***
 
