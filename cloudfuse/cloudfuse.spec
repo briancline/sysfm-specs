@@ -32,12 +32,12 @@ OpenStack project.
 
 %build
 ./configure
-make 
+%{__make} %{?%_smp_mflags}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-install -D -p -m 755 cloudfuse $RPM_BUILD_ROOT%{_bindir}/cloudfuse
+%{__rm} -rf $RPM_BUILD_ROOT
+%{__install} -D -p -m 755 cloudfuse $RPM_BUILD_ROOT%{_bindir}/cloudfuse
 
 
 %files
@@ -53,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Sat Jun 23 2012 Brian <brian.cline@gmail.com> - 0.9-1
 - Use version specified in the configure.in file, and set a global for the git ref.
+- Use vars for make, rm, and install binaries, and use the _smp_mflags macro if set.
 
 * Wed Jun 20 2012 Matt <matt@claritum.com> - 20120604-1
 - Initial spec file
