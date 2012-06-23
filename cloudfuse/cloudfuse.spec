@@ -1,11 +1,13 @@
+%define GITREF  2cd8214
+
 Summary:        A FUSE application which provides access to Rackspace's Cloud Files 
 Name:           cloudfuse 
-Version:        20120604
+Version:        0.9
 Release:        1%{?dist}
 License:        BSD
 Group:          System Environment/Libraries
 
-Source0:        redbo-cloudfuse-2cd8214.tar.gz
+Source0:        redbo-cloudfuse-%{?GITREF}.tar.gz
 URL:            http://redbo.github.com/cloudfuse/ 
 
 BuildRequires:  curl-devel fuse fuse-devel fuse-libs libxml2 libxml2-devel openssl-devel
@@ -25,7 +27,7 @@ Swift, the software behind Cloud Files, has been open-sourced as part of the
 OpenStack project.
 
 %prep
-%setup -n redbo-cloudfuse-2cd8214 
+%setup -n redbo-cloudfuse-%{?GITREF} 
 
 
 %build
@@ -35,7 +37,6 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -D -p -m 755 cloudfuse $RPM_BUILD_ROOT%{_bindir}/cloudfuse
 
 
@@ -50,5 +51,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jun 23 2012 Brian <brian.cline@gmail.com> - 0.9-1
+- Use version specified in the configure.in file, and set a global for the git ref.
+
 * Wed Jun 20 2012 Matt <matt@claritum.com> - 20120604-1
 - Initial spec file
