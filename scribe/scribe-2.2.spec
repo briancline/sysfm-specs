@@ -47,6 +47,8 @@ Python bindings for %{name}.
 %build
 # Fix compile errors from mismatched return enum-based return types
 sed -i -e 's/ --cpp --py --php/ --gen cpp:pure_enums --gen py --gen php/' src/Makefile.am
+# Fix compile errors from netinet/in.h and inttypes.h not being included
+sed -i -e 's/^AM_CPPFLAGS = /AM_CPPFLAGS = -DHAVE_NETINET_IN_H -DHAVE_INTTYPES_H /' src/Makefile.am
 ./bootstrap.sh %{config_opts}
 %configure %{config_opts}
 %{__make} %{?_smp_mflags}
