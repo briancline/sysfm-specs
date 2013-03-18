@@ -41,6 +41,14 @@ Requires:         fb303-python
 %description python
 Python bindings for %{name}.
 
+%package php
+Summary:          PHP bindings for %{name}
+Group:            Development/Libraries
+Requires:         fb303-php
+
+%description php
+PHP bindings for %{name}.
+
 %prep
 %setup -q -n scribe
 
@@ -66,6 +74,11 @@ sed -i -e 's/^AM_CPPFLAGS = /AM_CPPFLAGS = -DHAVE_NETINET_IN_H -DHAVE_INTTYPES_H
 %{__install} -D -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/scribed
 %{__install} -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/scribed
 
+# PHP
+%{__mkdir_p} %{buildroot}%{_datadir}/php/%{name}
+%{__cp} -r ./src/gen-php/%{name}/scribe.php %{buildroot}%{_datadir}/php/%{name}/
+%{__cp} -r ./src/gen-php/%{name}/scribe_types.php %{buildroot}%{_datadir}/php/%{name}/
+
 # Remove scripts
 %{__rm} ./examples/scribe_*
 
@@ -88,6 +101,10 @@ sed -i -e 's/^AM_CPPFLAGS = /AM_CPPFLAGS = -DHAVE_NETINET_IN_H -DHAVE_INTTYPES_H
 %{python_sitelib}/%{name}
 %{python_sitelib}/%{name}-*.egg-info
 %{_bindir}/scribe_cat
+
+%files php
+%defattr(-,root,root,-)
+%{_datadir}/php/%{name}/*.php
 
 %post
 /sbin/chkconfig --add scribed
