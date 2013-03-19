@@ -41,12 +41,22 @@ Requires:         fb303-python
 %description python
 Python bindings for %{name}.
 
+%package php
+Summary:          PHP bindings for %{name}
+Group:            Development/Libraries
+Requires:         fb303-php
+
+%description php
+PHP bindings for %{name}.
+
 %prep
 %setup -q -n scribe
 
 %build
 # Fix compile errors from mismatched return enum-based return types
 sed -i -e 's/ --cpp --py --php/ --gen cpp:pure_enums --gen py --gen php/' src/Makefile.am
+# Fix compile errors from netinet/in.h and inttypes.h not being included
+sed -i -e 's/^AM_CPPFLAGS = /AM_CPPFLAGS = -DHAVE_NETINET_IN_H -DHAVE_INTTYPES_H /' src/Makefile.am
 ./bootstrap.sh %{config_opts}
 %configure %{config_opts}
 %{__make} %{?_smp_mflags}
@@ -63,6 +73,11 @@ sed -i -e 's/ --cpp --py --php/ --gen cpp:pure_enums --gen py --gen php/' src/Ma
 %{__install} -D -m 644 ./examples/example1.conf %{buildroot}%{_sysconfdir}/scribed/default.conf
 %{__install} -D -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/rc.d/init.d/scribed
 %{__install} -D -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/scribed
+
+# PHP
+%{__mkdir_p} %{buildroot}%{_datadir}/php/%{name}
+%{__cp} -r ./src/gen-php/%{name}/scribe.php %{buildroot}%{_datadir}/php/%{name}/
+%{__cp} -r ./src/gen-php/%{name}/scribe_types.php %{buildroot}%{_datadir}/php/%{name}/
 
 # Remove scripts
 %{__rm} ./examples/scribe_*
@@ -86,6 +101,10 @@ sed -i -e 's/ --cpp --py --php/ --gen cpp:pure_enums --gen py --gen php/' src/Ma
 %{python_sitelib}/%{name}
 %{python_sitelib}/%{name}-*.egg-info
 %{_bindir}/scribe_cat
+
+%files php
+%defattr(-,root,root,-)
+%{_datadir}/php/%{name}/*.php
 
 %post
 /sbin/chkconfig --add scribed
