@@ -49,8 +49,8 @@ enterprise linux distribution, you might check his repo first.
   https://github.com/apache/thrift/blob/trunk/contrib/thrift.spec
 * The redis spec file from FC EPEL6:
   http://pkgs.fedoraproject.org/gitweb/?p=redis.git;a=tree
-* THe elasticsearch spec file set from Tavis Aitken:
-  https://github.com/tavisto/elasticsearch-rpms)
+* The elasticsearch spec file set from Tavis Aitken:
+  https://github.com/tavisto/elasticsearch-rpms
 * The spec file written and submitted for cloudfuse by kynx@github:
   https://gist.github.com/2960984/30c3632df89acd1a6c68b5330839e754965a8bf8
 * Google's own spec files for double-conversion, glog, and gflags
